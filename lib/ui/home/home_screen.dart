@@ -14,6 +14,9 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text('App Ventas'),
           centerTitle: true,
         ),
+        body: Center(
+          child: Text('Aplicación de Ventas para la ficha 1966722'),
+        ),
       ),
     );
   }

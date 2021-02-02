@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_one/bloc/login/login_bloc.dart';
 import 'package:flutter_one/ui/home/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -8,8 +10,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  LoginBloc loginBloc;
+  TextEditingController emailConroller;
+  TextEditingController passwordConroller;
+
   @override
   void initState() {
+    loginBloc = BlocProvider.of<LoginBloc>(context);
+    emailConroller = TextEditingController();
+    passwordConroller = TextEditingController();
     super.initState();
   }
 
@@ -81,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextField(
                               onTap: () {},
                               keyboardType: TextInputType.text,
+                              controller: emailConroller,
                             ),
                             SizedBox(
                               height: 15,
@@ -95,20 +105,42 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextField(
                               onTap: () {},
                               keyboardType: TextInputType.text,
+                              controller: passwordConroller,
                             ),
                             SizedBox(
                               height: 15,
                             ),
-                            FlatButton(
-                                color: Colors.grey.withOpacity(0.3),
-                                onPressed: () {
+                            BlocListener<LoginBloc, LoginState>(
+                              listener: (conxtext, state){
+                                if(state is LoginInitial){
+
+                                }
+                                if(state is LoginLoadingState){
+
+                                }
+                                if(state is LoginSuccessLogInState){
                                   Navigator.of(context)
                                       .pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
-                                },
-                                child: Text(
-                                  'Ingresar',
-                                  style: TextStyle(fontSize: 18),
-                                ))
+                                }
+                              },
+                              child: BlocBuilder<LoginBloc, LoginState>(
+                                  builder: (conxtext, state) {
+                                    if(state is LoginLoadingState){
+
+                                    }else{
+
+                                    }
+                                return FlatButton(
+                                    color: Colors.grey.withOpacity(0.3),
+                                    onPressed: () {
+                                      _doLogin();
+                                    },
+                                    child: Text(
+                                      'Ingresar',
+                                      style: TextStyle(fontSize: 18),
+                                    ));
+                              }),
+                            )
                           ],
                         ),
                       ),
@@ -166,5 +198,10 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  void _doLogin() {
+    loginBloc.add(LoginLogInEvent(
+        email: emailConroller.value.text, password: passwordConroller.value.text));
   }
 }

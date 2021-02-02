@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_one/ui/login/login_screen.dart';
+import 'package:flutter_one/ui/voice/voice_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => VoiceScreen()));
     });
     super.initState();
   }

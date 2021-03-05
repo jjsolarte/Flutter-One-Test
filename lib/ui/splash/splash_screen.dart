@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_one/ui/login/login_screen.dart';
+import 'package:flutter_one/ui/respuestaApiUI.dart';
 import 'package:flutter_one/ui/voice/voice_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => VoiceScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => RespuestaApiUi()));
     });
     super.initState();
   }
@@ -33,6 +34,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('JEISON SOLARTE'),
+        backgroundColor: Colors.deepPurple,
+        elevation: 0,
+        centerTitle: true,
+      ),
         body: Container(
             color: Color(0xFF673AB7),
             child: Column(
@@ -93,6 +100,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         Icons.copyright,
                         color: Colors.white,
                       ),
+                      SizedBox(width: 10,),
                       Text(
                         'ADSI 1966722',
                         style: TextStyle(
@@ -109,10 +117,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-Color changeColor(Color color){
+Color changeColor(Color color) {
   if (color == Colors.white) {
-    return color = Colors.deepOrange;
+    return color = Colors.blueAccent;
   } else {
     return color = Colors.white;
   }
+
 }

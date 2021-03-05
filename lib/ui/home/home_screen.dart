@@ -70,59 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          elevation: 5,
-                          child: ListTile(
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Opciones',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            subtitle: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.favorite_border),
-                                    SizedBox(width: 15,),
-                                    Text('Favoritos')
-                                  ],
-                                ),
-                                SizedBox(height: 15,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.favorite_border),
-                                    SizedBox(width: 15,),
-                                    Text('Favoritos')
-                                  ],
-                                ),SizedBox(height: 15,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.favorite_border),
-                                    SizedBox(width: 15,),
-                                    Text('Favoritos')
-                                  ],
-                                ),SizedBox(height: 15,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.favorite_border),
-                                    SizedBox(width: 15,),
-                                    Text('Favoritos')
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        child: VistaOpt(),
                       ),
                     ),
                     Container(
@@ -147,13 +95,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 flex: 1,
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.blueAccent.withOpacity(0.6),
+                      color: Colors.blue.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(20)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
-
                           onTap: () {
                             index = 0;
                             setState(() {});
@@ -190,4 +137,65 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
 }
+
+class VistaOpt extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5,
+      child: ListTile(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Opciones',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        subtitle: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.favorite_border),
+                SizedBox(width: 15,),
+                Text('Favoritos')
+              ],
+            ),
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.favorite_border),
+                SizedBox(width: 15,),
+                Text('Favoritos')
+              ],
+            ),SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.favorite_border),
+                SizedBox(width: 15,),
+                Text('Favoritos')
+              ],
+            ),SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.favorite_border),
+                SizedBox(width: 15,),
+                Text('Favoritos')
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

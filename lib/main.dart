@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_one/bloc/login/login_bloc.dart';
+import 'package:flutter_one/bloc/login/login_logic.dart';
+import 'package:flutter_one/bloc/respuestaApi/respuesta_api_bloc.dart';
 import 'package:flutter_one/ui/splash/splash_screen.dart';
 
 void main() {
@@ -13,7 +15,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context){
-          return LoginBloc();
+          return LoginBloc(logic: LoginLogicInit());
+        }),
+        BlocProvider(create: (context){
+          return RespuestaApiBloc();
         }),
       ],
       child: GestureDetector(

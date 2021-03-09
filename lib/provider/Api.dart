@@ -16,12 +16,13 @@ class Api{
 
       if(get.statusCode == 200){
 
-        final json = get.data[0];
-        final city = City.fromJson(json);
-        final res = get.data;
-        final List<City> listCity = cityFromJson(json.decode(res));
-        print('ko');
+        final jsonRes = get.data[0];
+        final city = City.fromJson(jsonRes);
+        // final res = json.decode(get.data);
+        // final listCity = Cities.fromJsonList(res);
+        final List<City> listCity = List();
         listCity.add(city);
+        print(listCity);
         return listCity;
 
       }else{
@@ -36,4 +37,16 @@ class Api{
     }
   }
 
+}
+
+class Cities {
+  List<City> cities = List();
+  Cities();
+  Cities.fromJsonList(List<dynamic> jsonList){
+    if(jsonList == null) return;
+    for(var item in jsonList){ //int i = 0; i < = jsonList.length ; i++
+      final city = City.fromJson(item);
+      cities.add(city);
+    }
+  }
 }
